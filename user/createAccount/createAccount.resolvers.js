@@ -4,7 +4,7 @@ const createAccountResolvers = {
   Mutation: {
     createAccount: async (
       _,
-      { firstName, lastName, username, email, password, bio, avatar }
+      { username, email, name, location, password, avatarURL, githubUsername }
     ) => {
       try {
         const existingUser = await client.user.findFirst({
@@ -17,21 +17,21 @@ const createAccountResolvers = {
 
         const hashedPw = await bcrypt.hash(password, 10);
 
-        const newUser = await client.user.create({
+        await client.user.create({
           data: {
-            firstName,
-            lastName,
             username,
             email,
+            name,
             password: hashedPw,
-            ...(bio && { bio }),
-            ...(avatar && { avatar }),
+            ...(location && { location }),
+            ...(avatarURL && { avatarURL }),
+            ...(githubUsername && { githubUsername }),
           },
         });
 
-        console.log(newUser);
-
-        return newUser;
+        return {
+          ok: true,
+        };
       } catch (err) {
         return {
           ok: false,

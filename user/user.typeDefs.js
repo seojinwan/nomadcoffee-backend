@@ -1,13 +1,13 @@
 const userTypeDefs = `#graphql
     type User {
         id: Int!
-        firstName: String!
-        lastName: String!
         username: String!
         email: String!
+        name: String!
+        location: String!
         password: String!
-        bio: String
-        avatar: String
+        avatarURL: String
+        githubUsername: String
         createdAt: String!
         updatedAt: String!
     }

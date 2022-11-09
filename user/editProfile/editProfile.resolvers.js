@@ -2,7 +2,7 @@ const editProfileResolvers = {
   Mutation: {
     editProfile: (
       _,
-      { firstName, lastName, username, email, password, bio, avatar }
+      { username, email, name, location, password, avatarURL, githubUsername }
     ) => {},
   },
 };

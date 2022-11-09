@@ -1,6 +1,6 @@
 const seeProfileTypeDefs = `#graphql
     type Query {
-        seeProfile(id: String): User
+        seeProfile(id: Int): User
     }
 `;
 

@@ -1,13 +1,13 @@
 const editProfileTypeDefs = `#graphql
     type Mutation {
         editProfile(
-            firstName: String!
-            lastName: String!
-            username: String!
-            email: String!
-            password: String!
-            bio: String
-            avatar: String
+            username: String,
+            email: String,
+            name: String,
+            location: String,
+            password: String,
+            avatarURL: String,
+            githubUsername: String,
         ):User 
     }
 `;

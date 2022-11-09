@@ -1,14 +1,18 @@
 const createAccountTypedefs = `#graphql
+    type CreateResult {
+        ok: Boolean
+        error: String
+    }
     type Mutation {
         createAccount(
-            firstName: String!
-            lastName: String!
             username: String!
             email: String!
+            name: String!
             password: String!
-            bio: String
-            avatar: String
-        ): User
+            location: String
+            avatarURL: String
+            githubUsername: String
+        ): CreateResult
     }
 `;
 export default createAccountTypedefs;
