@@ -1,7 +1,9 @@
 import client from "../../client.js";
 const seeProfileResolvers = {
   Query: {
-    seeProfile: (_, { id }) => client.user.findFirst({ where: { id } }),
+    // 유저 프로필 조회
+    seeProfile: (_, { username }) =>
+      client.user.findFirst({ where: { username } }),
   },
 };
 

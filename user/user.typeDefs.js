@@ -4,8 +4,9 @@ const userTypeDefs = `#graphql
         username: String!
         email: String!
         name: String!
-        location: String!
         password: String!
+
+        location: String
         avatarURL: String
         githubUsername: String
         createdAt: String!

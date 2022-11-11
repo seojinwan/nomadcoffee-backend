@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 const loginResolvers = {
   Mutation: {
+    // 로그인 , 토큰 반환, 암호 잘못된 경우 오류 반환
     login: async (_, { username, password }) => {
       try {
         const loginUser = await client.user.findUnique({ where: { username } });

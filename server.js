@@ -7,8 +7,11 @@ import http from "http";
 import cors from "cors";
 import bodyParser from "body-parser";
 import express from "express";
+import morgan from "morgan";
 
 import { typeDefs, resolvers } from "./schema.js";
+import graphqlUploadExpress from "graphql-upload/graphqlUploadExpress.mjs";
+import { getUser } from "./user/user.utils.js";
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -21,12 +24,16 @@ const server = new ApolloServer({
 });
 await server.start();
 
+app.use(cors(), morgan("tiny"), bodyParser.json());
+
+app.use("/static", express.static("uploads"));
+
 app.use(
-  "/",
-  cors(),
-  bodyParser.json(),
+  graphqlUploadExpress(),
   expressMiddleware(server, {
-    context: async ({ req }) => ({ token: req.headers.token }),
+    context: async ({ req }) => ({
+      loggedUser: await getUser(req.headers.authorization),
+    }),
   })
 );
 
