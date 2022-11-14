@@ -11,6 +11,10 @@ const userTypeDefs = `#graphql
         githubUsername: String
         createdAt: String!
         updatedAt: String!
+        followers: [User]
+        followings: [User]
+        totalFollowers: Int!
+        totalFollowings: Int!
     }
 `;
 
