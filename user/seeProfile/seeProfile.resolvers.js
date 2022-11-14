@@ -1,8 +1,8 @@
 import client from "../../client.js";
-const seeUserResolvers = {
+const seeProfileResolvers = {
   Query: {
     // 유저 프로필 조회
-    seeUser: (_, { username }) =>
+    seeProfile: (_, { username }) =>
       client.user.findUnique({
         where: { username },
         include: {
@@ -19,4 +19,4 @@ const seeUserResolvers = {
   },
 };
 
-export default seeUserResolvers;
+export default seeProfileResolvers;
